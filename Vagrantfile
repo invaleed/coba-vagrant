@@ -7,10 +7,24 @@ Vagrant.configure("2") do |config|
 #    ansible.playbook = "provisioning/common.yml"
 #  end
 
-  config.vm.provision :shell, path: "bootstrap.sh", privileged: true
+    config.vm.define "master" do |master|
+      master.vm.provision :shell, path: "bootstrap-master.sh", privileged: true
+      master.vm.box = BOX_IMAGE
+      master.vm.hostname = "master"
+      master.vm.network "private_network", ip: "10.0.5.30"
+      master.vm.provider "virtualbox" do |v|
+          v.memory = 768
+          v.cpus = 1
+          unless File.exist?("disk2-master.vdi")
+          v.customize ['createhd', '--format', 'VDI', '--filename', "disk2-master.vdi", '--size', 4096] # size is in MB
+          end
+          v.customize ['storageattach', :id, '--storagectl', 'SCSI', '--port', 2, '--device', 0, '--type', 'hdd', '--medium', "disk2-master.vdi"]
+      end
+    end
 
   (1..NODE_COUNT).each do |i|
     config.vm.define "server#{i}" do |server|
+      server.vm.provision :shell, path: "bootstrap.sh", privileged: true
       server.vm.box = BOX_IMAGE
       server.vm.hostname = "server#{i}"
       server.vm.network "private_network", ip: "10.0.5.3#{i}"

@@ -19,7 +19,8 @@ apt-get install -y \
 	curl \
 	htop \
 	net-tools \
-	ntp
+	ntp \
+    	ansible
 
 # configure /etc/hosts
 echo "server1	10.0.5.31" >> /etc/hosts
@@ -59,4 +60,4 @@ systemctl restart ntp
 # restart ssh service
 systemctl restart sshd
 
-echo "Bootstrap Servers Done..."
+echo "Bootstrap Master Done..."
