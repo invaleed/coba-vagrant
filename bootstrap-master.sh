@@ -23,10 +23,10 @@ apt-get install -y \
     	ansible
 
 # configure /etc/hosts
-echo "server1	10.0.5.31" >> /etc/hosts
-echo "server2	10.0.5.32" >> /etc/hosts
-echo "server3	10.0.5.33" >> /etc/hosts
-echo "master	10.0.5.30" >> /etc/hosts
+echo "10.0.5.31	server1" >> /etc/hosts
+echo "10.0.5.32	server2" >> /etc/hosts
+echo "10.0.5.33	server3" >> /etc/hosts
+echo "10.0.5.30	master" >> /etc/hosts
 
 # Edit ntp
 cat << EOF > /etc/ntp.conf
