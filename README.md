@@ -1,5 +1,5 @@
 # coba-vagrant
-This is howto create multiple VMs using Vagrant and add second disk to each VMs.
+This is howto create multi VMs using Vagrant, add second disk to each VMs, and provisioning using different script.
 
 ## Usage
 
@@ -19,6 +19,7 @@ $ git clone https://github.com/invaleed/coba-vagrant
 $ cd coba-vagrant
 $ vagrant up
 $ vagrant status
+
 Current machine states:
 master                    running (virtualbox)
 server1                   running (virtualbox)
