@@ -8,9 +8,9 @@ apt-get install -y \
 	ntp
 
 # configure /etc/hosts
-echo "server01	10.0.5.31" >> /etc/hosts
-echo "server02	10.0.5.32" >> /etc/hosts
-echo "server03	10.0.5.33" >> /etc/hosts
+echo "server1	10.0.5.31" >> /etc/hosts
+echo "server2	10.0.5.32" >> /etc/hosts
+echo "server3	10.0.5.33" >> /etc/hosts
 
 # Edit ntp
 cat << EOF > /etc/ntp.conf

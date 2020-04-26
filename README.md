@@ -1,6 +1,5 @@
 # coba-vagrant
-Vagrant for beginner
-This howto create multiple VMs using Vagrant and add second disk to each VMs.
+This is howto create multiple VMs using Vagrant and add second disk to each VMs.
 
 ## Usage
 
