@@ -46,7 +46,9 @@ yum -y install \
 	curl \
 	htop \
 	net-tools \
-	ntp
+	ntp \
+	glances \
+	python-bottle
 
 # configure timezone
 rm -rf /etc/localtime
@@ -88,6 +90,11 @@ echo "sysadmin:supersecret" | chpasswd
 
 # restart ntpd
 systemctl restart ntpd
+
+# start glances
+firewall-cmd --permanent --add-port=61208/tcp
+firewall-cmd --reload
+glances -w &
 
 # restart ssh service
 systemctl restart sshd
