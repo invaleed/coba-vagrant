@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
 #  end
 
     config.vm.define "master" do |master|
-      master.vm.provision :shell, path: "bootstrap-centos-master.sh", privileged: true
+      master.vm.provision :shell, path: "bootstrap-master.sh", privileged: true
       master.vm.box = BOX_IMAGE
       master.vm.hostname = "master"
       master.vm.network "private_network", ip: "10.0.5.30"
@@ -24,7 +24,7 @@ Vagrant.configure("2") do |config|
 
   (1..NODE_COUNT).each do |i|
     config.vm.define "server#{i}" do |server|
-      server.vm.provision :shell, path: "bootstrap-centos.sh", privileged: true
+      server.vm.provision :shell, path: "bootstrap.sh", privileged: true
       server.vm.box = BOX_IMAGE
       server.vm.hostname = "server#{i}"
       server.vm.network "private_network", ip: "10.0.5.3#{i}"
