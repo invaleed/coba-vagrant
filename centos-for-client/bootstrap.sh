@@ -2,37 +2,40 @@
 
 cat << EOF > /etc/yum.repos.d/CentOS-Base.repo
 
-[base]
-name=CentOS-$releasever - Base
-baseurl=http://buaya.klas.or.id/centos/$releasever/os/$basearch/
+[CentOSPlus]
+name=CentOS
+baseurl=http://buaya.klas.or.id/centos/7.7.1908/centosplus/x86_64/
+enabled=1
 gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+gpgkey=http://buaya.klas.or.id/centos/RPM-GPG-KEY-CentOS-7
 
-[updates]
-name=CentOS-$releasever - Updates
-baseurl=http://buaya.klas.or.id/centos/$releasever/updates/$basearch/
+[Extras]
+name=CentOS
+baseurl=http://buaya.klas.or.id/centos/7.7.1908/extras/x86_64/
+enabled=1
 gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+gpgkey=http://buaya.klas.or.id/centos/RPM-GPG-KEY-CentOS-7
 
-[extras]
-name=CentOS-$releasever - Extras
-baseurl=http://buaya.klas.or.id/centos/$releasever/extras/$basearch/
+[Fasttrack]
+name=CentOS
+baseurl=http://buaya.klas.or.id/centos/7.7.1908/fasttrack/x86_64/
+enabled=1
 gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+gpgkey=http://buaya.klas.or.id/centos/RPM-GPG-KEY-CentOS-7
 
-[centosplus]
-name=CentOS-$releasever - Plus
-baseurl=http://buaya.klas.or.id/centos/$releasever/centosplus/$basearch/
+[OS]
+name=CentOS
+baseurl=http://buaya.klas.or.id/centos/7.7.1908/os/x86_64/
+enabled=1
 gpgcheck=1
-enabled=0
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+gpgkey=http://buaya.klas.or.id/centos/RPM-GPG-KEY-CentOS-7
 
-[contrib]
-name=CentOS-$releasever - Contrib
-baseurl=http://buaya.klas.or.id/centos/$releasever/contrib/$basearch/
+[Update]
+name=CentOS
+baseurl=http://buaya.klas.or.id/centos/7.7.1908/updates/x86_64/
+enabled=1
 gpgcheck=1
-enabled=0
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+gpgkey=http://buaya.klas.or.id/centos/RPM-GPG-KEY-CentOS-7
 
 EOF
 
@@ -44,7 +47,10 @@ yum -y install \
 	htop \
 	net-tools \
 	ntp
-yum update
+
+# configure timezone
+rm -rf /etc/localtime
+ln -s /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 
 # configure /etc/hosts
 echo "10.0.5.31	server1" >> /etc/hosts
