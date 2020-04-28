@@ -17,6 +17,14 @@ Clone Repository
 ```bash
 $ git clone https://github.com/invaleed/coba-vagrant
 $ cd coba-vagrant
+
+--- if target server = ubuntu
+$ cd ubuntu-for-client
+$ vagrant up
+$ vagrant status
+
+--- if target server = centos
+$ cd centos-for-client
 $ vagrant up
 $ vagrant status
 
@@ -25,6 +33,7 @@ master                    running (virtualbox)
 server1                   running (virtualbox)
 server2                   running (virtualbox)
 server3                   running (virtualbox)
+...
 
 This environment represents multiple VMs. The VMs are all listed     
 above with their current state. For more information about a specific
